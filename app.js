@@ -1,7 +1,7 @@
 const express=require('express')
 const app=express()
 const appRouter = require("./routes/index");
-const port = process.env.PORT || 8900;
+const port = process.env.PORT || 4000;
 const colors = require("colors");
 const db = require("./database");
 const cors = require("cors");

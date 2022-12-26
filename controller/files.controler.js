@@ -1,4 +1,4 @@
-const {Files} = require('../database')
+const {PaymentFiles} = require('../database')
 const multer = require('multer')
 const path = require('path')
 
@@ -12,7 +12,7 @@ exports.createFiles = async(req,res) =>{
             year: req.body.year,
             name: req.body.name ,
         }
-    const addFiles = await   Files.create(info) ;
+    const addFiles = await   PaymentFiles.create(info) ;
     res.status(200).json(addFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -51,7 +51,7 @@ exports.upload = multer({
 exports.getFilesByLocation = async(req,res) =>{
     const {location} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -60,7 +60,7 @@ exports.getFilesByLocation = async(req,res) =>{
 exports.getFilesByYear = async(req,res) =>{
     const {location,year} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location,year}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location,year}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -69,7 +69,7 @@ exports.getFilesByYear = async(req,res) =>{
 exports.getFilesByFileType = async(req,res) =>{
     const {location,fileType} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location,fileType}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location,fileType}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -78,7 +78,7 @@ exports.getFilesByFileType = async(req,res) =>{
 exports.getFilesByYearFileType = async(req,res) =>{
     const {location,fileType,year} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location,fileType,year}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location,fileType,year}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -87,7 +87,7 @@ exports.getFilesByYearFileType = async(req,res) =>{
 exports.getFilesByMonthFileType = async(req,res) =>{
     const {location,fileType,month} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location,fileType,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location,fileType,month}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -96,7 +96,7 @@ exports.getFilesByMonthFileType = async(req,res) =>{
 exports.getFilesByYearMonth = async(req,res) =>{
     const {location,year,month} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location,year,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location,year,month}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -105,7 +105,7 @@ exports.getFilesByYearMonth = async(req,res) =>{
 exports.getFilesBySearch = async(req,res) =>{
     const {location,fileType,year,month} = req.query;
     try {
-    const getFiles = await   Files.findAll({where:{location,fileType,year,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{location,fileType,year,month}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
@@ -115,7 +115,7 @@ exports.getFilesByMonth = async(req,res) =>{
     const {location,month} = req.query;
     console.log(req);
         try {
-            const getFiles = await   Files.findAll({where:{location,month}}) ;
+            const getFiles = await   PaymentFiles.findAll({where:{location,month}}) ;
             res.status(200).json(getFiles) 
     
     } catch (error) {
