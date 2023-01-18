@@ -1,5 +1,5 @@
 const express = require("express");
-const { createFiles, getFilesByLocation, upload, getFilesBySearch,  getFilesByMonth, getFilesByYear, getFilesByFileType, getFilesByYearFileType, getFilesByMonthFileType, getFilesByYearMonth } = require("../controller/files.controler");
+const { createFiles, getFilesByLocation, upload, getFilesBySearch,  getFilesByMonth, getFilesByYear, getFilesByFileType, getFilesByYearFileType, getFilesByMonthFileType, getFilesByYearMonth, putFilesClientId } = require("../controller/files.controler");
 const filesRoute = express.Router();
 
 filesRoute.post("/add-files",upload, createFiles);
@@ -12,5 +12,6 @@ filesRoute.get("/get-filesByFileType", getFilesByFileType);
 filesRoute.get("/get-filesByYearFileType", getFilesByYearFileType);
 filesRoute.get("/get-filesByMonthFileType", getFilesByMonthFileType);
 filesRoute.get("/get-filesByYearMonth", getFilesByYearMonth);
+filesRoute.put('/put-filesClientId',putFilesClientId);
 
 module.exports = filesRoute;
