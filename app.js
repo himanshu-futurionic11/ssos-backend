@@ -14,6 +14,8 @@ app.use(appRouter);
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/uploads', express.static('./uploads'))
+app.use('/ClientImg', express.static('./ClientImg'))
+
 
 app.get('/file',(req,res)=>{
     

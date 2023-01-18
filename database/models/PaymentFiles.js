@@ -9,11 +9,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.Doctors.belongsTo(models.Clients,{
+        foreignKey: 'client_id',
+        as:'client'
+      })
     }
   }
   PaymentFiles.init(
     {
         file:DataTypes.STRING,
+        clientId: {
+          field:'client_id',
+          type: DataTypes.INTEGER,
+          references: {
+            model: {
+              tableName: "clients",
+            },
+            key: "id",
+          },
+        },
         location:DataTypes.STRING,
         fileType:DataTypes.STRING,
         month:DataTypes.INTEGER,

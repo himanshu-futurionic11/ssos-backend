@@ -6,6 +6,7 @@ exports.createFiles = async(req,res) =>{
     try {
         let info = {
             file: req.file.path,
+            clientId: req.file.clientId,
             location: req.body.location,
             fileType: req.body.fileType,
             month: req.body.month,
@@ -49,73 +50,73 @@ exports.upload = multer({
 }).single('file')
 
 exports.getFilesByLocation = async(req,res) =>{
-    const {location} = req.query;
+    const {clientId,location} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesByYear = async(req,res) =>{
-    const {location,year} = req.query;
+    const {clientId,location,year} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location,year}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,year}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesByFileType = async(req,res) =>{
-    const {location,fileType} = req.query;
+    const {clientId,location,fileType} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location,fileType}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesByYearFileType = async(req,res) =>{
-    const {location,fileType,year} = req.query;
+    const {clientId,location,fileType,year} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location,fileType,year}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType,year}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesByMonthFileType = async(req,res) =>{
-    const {location,fileType,month} = req.query;
+    const {clientId,location,fileType,month} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location,fileType,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType,month}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesByYearMonth = async(req,res) =>{
-    const {location,year,month} = req.query;
+    const {clientId,location,year,month} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location,year,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,year,month}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesBySearch = async(req,res) =>{
-    const {location,fileType,year,month} = req.query;
+    const {clientId,location,fileType,year,month} = req.query;
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{location,fileType,year,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType,year,month}}) ;
     res.status(200).json(getFiles) 
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
 }
 exports.getFilesByMonth = async(req,res) =>{
-    const {location,month} = req.query;
+    const {clientId,location,month} = req.query;
     console.log(req);
         try {
-            const getFiles = await   PaymentFiles.findAll({where:{location,month}}) ;
+            const getFiles = await   PaymentFiles.findAll({where:{clientId,location,month}}) ;
             res.status(200).json(getFiles) 
     
     } catch (error) {
