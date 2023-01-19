@@ -49,15 +49,6 @@ exports.upload = multer({
     // }
 }).single('file')
 
-exports.putFilesClientId = async(req,res) =>{
-    const {id} = req.query;
-    try {
-    const getFiles = await PaymentFiles.update({clientId:1},{where:{id}});
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
 
 exports.getFilesByLocation = async(req,res) =>{
     const {clientId,location} = req.query;
