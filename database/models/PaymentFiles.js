@@ -19,16 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   PaymentFiles.init(
     {
         file:DataTypes.STRING,
-        clientId: {
-          field:'client_id',
-          type: DataTypes.INTEGER,
-          references: {
-            model: {
-              tableName: "clients",
-            },
-            key: "id",
-          },
-        },
+        clientId: DataTypes.INTEGER,
         location:DataTypes.STRING,
         fileType:DataTypes.STRING,
         month:DataTypes.INTEGER,
