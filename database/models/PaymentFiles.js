@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // models.Doctors.belongsTo(models.Clients,{
+      //   foreignKey: 'client_id',
+      //   as:'client'
+      // })
     }
   }
   PaymentFiles.init(
