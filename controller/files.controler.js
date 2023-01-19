@@ -51,7 +51,7 @@ exports.upload = multer({
 
 
 exports.getFilesByLocation = async(req,res) =>{
-    const {clientId,location} = req.query;
+    const {clientId,location} = req.body;
     try {
     const getFiles = await   PaymentFiles.findAll({where:{clientId,location}}) ;
     res.status(200).json(getFiles) 
