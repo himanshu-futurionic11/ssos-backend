@@ -12,6 +12,5 @@ filesRoute.get("/get-filesByFileType", getFilesByFileType);
 filesRoute.get("/get-filesByYearFileType", getFilesByYearFileType);
 filesRoute.get("/get-filesByMonthFileType", getFilesByMonthFileType);
 filesRoute.get("/get-filesByYearMonth", getFilesByYearMonth);
-filesRoute.put('/put-filesClientId',putFilesClientId);
 
 module.exports = filesRoute;
