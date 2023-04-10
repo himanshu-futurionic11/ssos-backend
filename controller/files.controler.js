@@ -32,21 +32,6 @@ const storage = multer.diskStorage({
 exports.upload = multer({
     storage: storage,
     limits: { fileSize: '1000000' },
-    // fileFilter: (req, file, cb) => {
-    //     const fileTypes = /pdf|xlsx/
-    //     const mimeType = fileTypes.test(file.mimetype)
-    //     const extname = fileTypes.test(path.extname(file.originalname))
-        
-    //     if (file.mimetype === 'vnd.openxmlformats-officedocument.spreadsheetml.sheet') {   
-    //         return cb(null, true)      
-    //     }
-    //     else{      
-    //         if(mimeType && extname) {
-    //             return cb(null, true)
-    //         }
-    //         cb('Give proper files formate to upload')
-    //     }
-    // }
 }).single('file')
 
 

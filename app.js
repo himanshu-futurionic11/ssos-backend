@@ -32,7 +32,7 @@ app.get('/', (req,res)=>{
   
   app.use(async (err, req, res, next) => {
     if (err instanceof multer.MulterError) {
-      res.status(500).send("There was an upload error");
+      res.status(500)//.send("There was an upload error");
     }
   
     res.status(err.statusCode || 500).json({
