@@ -6,7 +6,7 @@ exports.createFiles = async(req,res) =>{
     try {
         let info = {
             file: req.file.path,
-            clientId: req.file.clientId,
+            clientId: req.body.clientId,
             location: req.body.location,
             fileType: req.body.fileType,
             month: req.body.month,
