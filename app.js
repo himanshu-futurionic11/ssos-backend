@@ -47,6 +47,8 @@ db.sequelize
   .authenticate()
   .then(() => console.log("Database Connected".black.bgWhite));
 
-app.listen(port, () => {
-  console.log(`server listening on port ${port}`.rainbow);
-});
+app.listen(
+//   port, () => {
+//   console.log(`server listening on port ${port}`.rainbow);
+// }
+);
