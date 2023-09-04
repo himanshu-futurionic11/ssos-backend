@@ -8,6 +8,8 @@ exports.createClients = async(req,res) =>{
             imsrc: req.file.path,
             title: req.body.title,
             name: req.body.name,
+            userName: req.body.userName,
+            password:req.body.password,
         }
     const addClients = await   Clients.create(info) ;
     res.status(200).json(addClients) 
