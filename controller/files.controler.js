@@ -1,6 +1,7 @@
 const {PaymentFiles} = require('../database')
 const multer = require('multer')
 const path = require('path')
+const pick = require('../utils/pick')
 
 exports.createFiles = async(req,res) =>{
     try {
@@ -35,76 +36,11 @@ exports.upload = multer({
 }).single('file')
 
 
-exports.getFilesByLocation = async(req,res) =>{
-    const {clientId,location} = req.query;
-    try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location}}) ;
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
-exports.getFilesByYear = async(req,res) =>{
-    const {clientId,location,year} = req.query;
-    try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,year}}) ;
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
-exports.getFilesByFileType = async(req,res) =>{
-    const {clientId,location,fileType} = req.query;
-    try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType}}) ;
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
-exports.getFilesByYearFileType = async(req,res) =>{
-    const {clientId,location,fileType,year} = req.query;
-    try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType,year}}) ;
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
-exports.getFilesByMonthFileType = async(req,res) =>{
-    const {clientId,location,fileType,month} = req.query;
-    try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType,month}}) ;
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
-exports.getFilesByYearMonth = async(req,res) =>{
-    const {clientId,location,year,month} = req.query;
-    try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,year,month}}) ;
-    res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
 exports.getFilesBySearch = async(req,res) =>{
-    const {clientId,location,fileType,year,month} = req.query;
+    const filter =pick(req.query,["clientId","location","fileType","year","month"])
     try {
-    const getFiles = await   PaymentFiles.findAll({where:{clientId,location,fileType,year,month}}) ;
+    const getFiles = await   PaymentFiles.findAll({where:filter}) ;
     res.status(200).json(getFiles) 
-    } catch (error) {
-        res.status(500).json({type:error.name, massage:error.message})
-    }
-}
-exports.getFilesByMonth = async(req,res) =>{
-    const {clientId,location,month} = req.query;
-    console.log(req);
-        try {
-            const getFiles = await   PaymentFiles.findAll({where:{clientId,location,month}}) ;
-            res.status(200).json(getFiles) 
-    
     } catch (error) {
         res.status(500).json({type:error.name, massage:error.message})
     }
