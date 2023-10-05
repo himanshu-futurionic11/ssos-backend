@@ -1,10 +1,11 @@
 const express = require("express");
-const { getClients, imageUpload, createClients } = require("../controller/clients.controler");
+const { getClients, upload, createClients,updateClients } = require("../controller/clients.controler");
 
 const clientsRoute = express.Router();
 
-clientsRoute.post("/add-client",imageUpload, createClients);
+clientsRoute.post("/add-client",upload, createClients);
 
 clientsRoute.get("/get-clients", getClients);
+clientsRoute.put("/update-clients",updateClients );
 
 module.exports = clientsRoute;
